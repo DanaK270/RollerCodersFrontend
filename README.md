@@ -52,6 +52,22 @@ npm run dev
 - **GET /profile**
   - Returns user profile
 
+  ### ***Screenshots***
+---
+
+## ERD
+![image](https://i.imgur.com/RTwm5Ez.png)
+## Wireframes
+![image](https://i.imgur.com/Shxoyjm.png)
+## Component Hierarchy 
+![image](https://i.imgur.com/2hpoDdV.png)
+
+### ***Future Updates***
+---
+- Add user reviews
+- Add user ratings
+- Add user comments
+- Add user profile
 
 ### ***Acknowledgements***
 ---
