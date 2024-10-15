@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Nav from './components/Nav'
 import Home from './components/Home'
-//import Parks from './components/Parks'
+import Parks from './components/Parks'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 //import { checkSession } from '../'
@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           {/* <Route path="/parks" element={<Parks user={user} />} /> */}
-          <Route path="/themeParks" element={<ThemeParks />} />
+          <Route path="/parks" element={<Parks />} />
         </Routes>
       </main>
       <footer>
