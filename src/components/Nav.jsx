@@ -14,10 +14,10 @@ const Nav = () => {
     <nav className="navbar">
       <div className="logo">Tt</div>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/parks">Parks</Link>
-        <Link to="/logIn">Log In</Link>
+        <Link key="home" to="/">Home</Link>
+        <Link key="about" to="/about">About</Link>
+        <Link key="parks" to="/parks">Parks</Link>
+        <Link key="login" to="/logIn">Log In</Link>
 
         <input
           type="text"
