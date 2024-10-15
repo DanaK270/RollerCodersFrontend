@@ -1,0 +1,227 @@
+body {
+  margin: 0;
+  background-color: #f4f4f4; /* Light grey background for contrast */
+}
+
+div {
+  background-size: cover;
+}
+
+.navbar {
+  display: flex;
+}
+
+.home-container {
+  margin: 40px;
+  padding: 50px;
+  border: 2px solid #6a5acd; /* Dark slate blue border */
+  border-radius: 10px;
+  background-color: #fffbe6; /* Soft yellow background */
+}
+
+h1, h2 {
+  font-size: 2.5em; /* Increased size for impact */
+  margin-bottom: 20px;
+  text-align: center;
+  color: #6a5acd; /* Dark slate blue */
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  color: #333; /* Darker text for readability */
+}
+
+.navbar {
+  color: #ffffff;
+  background: linear-gradient(to right, #6a5acd, #ffdd57); /* Purple to yellow gradient */
+  padding: 1em;
+  min-height: 2em;
+  font-family: 'Georgia', serif;
+  font-size: large;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff; /* White for contrast */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.navbar a {
+  color: #ffffff; /* White links for contrast */
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 1em;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  background: linear-gradient(to right, #6a5acd, #ffdd57);
+  color: #ffffff;
+  /* padding: 10px; */
+  text-align: center;
+  position: fixed; 
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.park-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.parks-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center; 
+  width: 100%; 
+}
+
+.park-item {
+  border: 2px solid #6a5acd; /* Dark slate blue border */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.park-item:hover {
+  background-color: #ffebcd; /* Light beige on hover */
+  transform: scale(1.05);
+}
+
+.park-link {
+  display: block;
+  padding: 10px;
+  text-decoration: solid;
+  color: #6a5acd; /* Dark slate blue text */
+}
+
+.park-details {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #6a5acd; /* Dark slate blue border */
+  border-radius: 20px;
+  background-color: #ffffff; /* White for clarity */
+}
+
+.park-details h2 {
+  margin-top: 0;
+  color: #6a5acd; /* Dark slate blue for headings */
+}
+
+.park-details p {
+  margin: 6px 0;
+  color: #333; /* Dark text for readability */
+}
+
+.auth-container {
+  max-width: 100%; /* Adjusted for responsive design */
+  margin: 8rem;
+  padding: 50px;
+  background-color: #ffffff; /* White for contrast */
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Positioning the button */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Increased spacing */
+}
+
+label {
+  display: grid;
+  margin-bottom: 5px; /* Increased spacing */
+  font-weight: bold; /* Bolder label */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px; /* Adjusted padding */
+  border: 2px solid #6a5acd; /* Dark slate blue border */
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ffdd57; /* Yellow button color */
+  color: #6a5acd; /* Dark slate blue text */
+  cursor: pointer;
+  padding: 10px 20px; /* Added padding */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #ffd700; /* Darker yellow on hover */
+}
+
+.about-container {
+  margin: 40px;
+  padding: 50px;
+  border: 2px solid #6a5acd; /* Dark slate blue border */
+  border-radius: 10px;
+  background-color: #ffffff; /* White background */
+  text-align: center;
+}
+
+
+.home {
+  background-image: url("https://images6.alphacoders.com/372/372198.jpg");
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 50px 20px;
+  color: #ffffff; /* Default text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+.home h1, 
+.home h2 {
+  color: #ffdd57; /* Bright yellow for headings */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Darker shadow for contrast */
+}
+
+.home p {
+  color: #ffffff; /* White text for better contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Subtle shadow for readability */
+}
