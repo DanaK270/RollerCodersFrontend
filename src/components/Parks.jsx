@@ -52,10 +52,10 @@ const Parks = () => {
       <div className="park-container">
         <div className="parks-list row">
           {parks?.map((park) => (
-            <div class="card col-md-3 mb-4 park-item" key={park.id}>
+            <div className="card col-md-3 mb-4 park-item" key={park.id}>
               <img src={park.image} alt="park image" />
 
-              <div class="card-body " onClick={() => handleParkClick(park)}>
+              <div className="card-body " onClick={() => handleParkClick(park)}>
                 <h3>{park.name}</h3>
               </div>
             </div>
