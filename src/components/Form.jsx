@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-const AddParkForm = ({ parks }) => {
+const AddParkForm = () => {
   const [formData, setFormData] = useState({
     park: '',
     name: '',
     // location: '',
     country: '',
     type: '',
-    timezone: '',
+    // timezone: '',
     description: '',
-    images: null
+    image: null
   })
 
   const handleChange = (e) => {
@@ -27,9 +27,11 @@ const AddParkForm = ({ parks }) => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
+    const res = await axios.post('http://localhost:4000/themeparks/addpark', {
+      formData
+    })
     console.log(formData)
   }
 
@@ -79,7 +81,7 @@ const AddParkForm = ({ parks }) => {
             onChange={handleChange}
           />
         </div>
-
+        {/* 
         <div>
           <label>Time Zone</label>
           <input
@@ -88,7 +90,7 @@ const AddParkForm = ({ parks }) => {
             value={formData.timezone}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <div>
           <label>Description</label>
@@ -103,7 +105,7 @@ const AddParkForm = ({ parks }) => {
         <div>
           <label>Image</label>
           <input
-            name="images"
+            name="image"
             type="file"
             accept="image/*"
             multiple

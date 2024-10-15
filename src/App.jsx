@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           {/* <Route path="/parks" element={<Parks user={user} />} /> */}
           <Route path="/themeParks" element={<ThemeParks />} />
-          <Route path="/addPark" element={<Form themes={themes}/>} />
+          <Route path="/addPark" element={<Form />} />
         </Routes>
       </main>
       <footer>
