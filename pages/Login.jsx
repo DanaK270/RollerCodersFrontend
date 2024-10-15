@@ -1,59 +1,55 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-//import Client from "../services/api";
+import { LogInUser } from '../services/Auth'
 
 const Login = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false) // State to toggle password visibility
   const navigate = useNavigate()
+
+  let initialState = { email: '', password: '' }
+  const [formValues, setFormValues] = useState(initialState)
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const response = await Client.post('/auth/login', {
-        usernameOrEmail,
-        password
-      })
-      console.log(response.data)
-      navigate('/')
-    } catch (error) {
-      console.error('Error logging in:', error)
-    }
+    const payload = await LogInUser(formValues)
+    setFormValues(initialState)
+    setUser(payload)
+    navigate('/feed')
   }
 
   return (
-    <div className="auth-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username or Email"
-          value={usernameOrEmail}
-          onChange={(e) => setUsernameOrEmail(e.target.value)}
-          autoComplete="username"
-        />
-        <div className="password-input-container">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
-          <button
-            type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? 'Hide' : 'Show'}
+    <div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              placeholder="example@example.com"
+              value={formValues.email}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="password"
+              value={formValues.password}
+              required
+            />
+          </div>
+          <button disabled={!formValues.email || !formValues.password}>
+            Log In
           </button>
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        New user? <Link to="/register">Register here</Link>.
-      </p>
+        </form>
+      </div>
     </div>
   )
 }

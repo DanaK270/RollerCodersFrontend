@@ -6,7 +6,7 @@ import Home from './components/Home'
 //import Parks from './components/Parks'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
-//import { checkSession } from '../'
+import { CheckSession } from '../services/Auth'
 import About from './components/About'
 import ThemeParks from './components/ThemeParks'
 
@@ -18,17 +18,17 @@ const App = () => {
     localStorage.clear()
   }
 
-  // useEffect(() => {
-  //   const checkToken = async () => {
-  //     const user = await checkSession()
-  //     setUser(user)
-  //   }
+  useEffect(() => {
+    const checkToken = async () => {
+      const user = await CheckSession()
+      setUser(user)
+    }
 
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     checkToken()
-  //   }
-  // }, [])
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="App">

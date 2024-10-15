@@ -1,65 +1,92 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-//import Client from "../services/api";
+import { RegisterUser } from '../services/Auth'
 
 const Register = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false) // State to toggle password visibility
   const navigate = useNavigate()
+
+  const initialState = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }
+
+  const [formValues, setFormValues] = useState(initialState)
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const response = await Client.post('/auth/register', {
-        username,
-        email,
-        password
-      })
-      console.log(response.data)
-      navigate('/login')
-    } catch (error) {
-      console.error('Error registering user:', error)
-    }
+    await RegisterUser({
+      name: formValues.name,
+      email: formValues.email,
+      password: formValues.password
+    })
+    setFormValues(initialState)
+    navigate('/login')
   }
 
   return (
-    <div className="auth-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autoComplete="username"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-        />
-        <div className="password-input-container">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
+    <div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              onChange={handleChange}
+              name="name"
+              type="text"
+              placeholder="Mohamed Yaqoob"
+              value={formValues.name}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              placeholder="example@example.com"
+              value={formValues.email}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="password"
+              value={formValues.password}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="confirmPassword"
+              value={formValues.confirmPassword}
+              required
+            />
+          </div>
           <button
-            type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
+            disabled={
+              !formValues.email ||
+              (!formValues.password &&
+                formValues.confirmPassword === formValues.password)
+            }
           >
-            {showPassword ? 'Hide' : 'Show'}
+            Log In
           </button>
-        </div>
-        <button type="submit">Register</button>
-      </form>
+        </form>
+      </div>
     </div>
   )
 }
