@@ -1,0 +1,35 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+
+const ParkDetails = () => {
+  const params = useParams()
+  const { parkId } = params
+  const [parkDetail, setParkDetail] = useState({})
+  useEffect(() => {
+    const getParkDetail = async () => {
+      const response = await axios.get(
+        `http://localhost:${PORT}/themeparks/view/${parkId}?key=${
+          import.meta.env.VITE_PORT
+        }`
+      )
+      setParkDetail(response.data)
+    }
+    getParkDetail()
+  }, [parkId])
+  return (
+    <div>
+      <h1>{parkDetail.name}</h1>
+      <img src={parkDetail.image} alt={parkDetail.name}>
+        {' '}
+      </img>
+      <p>{parkDetail.description}</p>
+      <div>
+        <h3>Park Type:</h3>
+        {parkDetail.parkType}
+      </div>
+    </div>
+  )
+}
+
+export default ParkDetails

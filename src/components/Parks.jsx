@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
+import { useNavigate } from 'react-router-dom'
 
 const Parks = () => {
+  let navigate = useNavigate()
   const [parks, setParks] = useState([])
   const [selectedPark, setSelectedPark] = useState(null)
   const PORT = import.meta.env.VITE_PORT
@@ -52,7 +54,13 @@ const Parks = () => {
       <div className="park-container">
         <div className="parks-list row">
           {parks?.map((park) => (
-            <div class="card col-md-3 mb-4 park-item" key={park.id}>
+            <div
+              class="card col-md-3 mb-4 park-item"
+              key={park.id}
+              onClick={() => {
+                navigate(`/parks/details/${park.id}`)
+              }}
+            >
               <img src={park.image} alt="park image" />
 
               <div class="card-body " onClick={() => handleParkClick(park)}>
