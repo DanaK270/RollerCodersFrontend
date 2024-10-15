@@ -20,7 +20,7 @@ Welcome to RollerCoders! This app lets you explore theme parks and learn about t
 ---
 - **Frontend:** React.js, React Router
 - **Backend:** Node.js, Express.js, MongoDB, Mongoose
-- **Authentication:** Google OAuth
+- **Authentication:** JSON Web Tokens (JWT)
 - **Database:** MongoDB Atlas
 
 ### ***Setup***

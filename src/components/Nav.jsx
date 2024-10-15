@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import "../App.css";
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import '../App.css'
 
 const Nav = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
 
   const handleSearch = () => {
-    navigate(`/parks?search=${encodeURIComponent(searchQuery)}`);
-  };
+    navigate(`/parks?search=${encodeURIComponent(searchQuery)}`)
+  }
 
   return (
     <nav className="navbar">
@@ -28,7 +28,7 @@ const Nav = () => {
         <button onClick={handleSearch}>Search</button>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
