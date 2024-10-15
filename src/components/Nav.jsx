@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import '../App.css'
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import Rollerlogo from '../assets/Rollerlogo.png';
+import '../App.css';
 
 const Nav = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    navigate(`/parks?search=${encodeURIComponent(searchQuery)}`)
-  }
+    navigate(`/parks?search=${encodeURIComponent(searchQuery)}`);
+  };
 
   return (
     <nav className="navbar">
-      <div className="logo">RollerCoders</div>
+      <div className="logo">
+        <Link to="/"> 
+          <img src={Rollerlogo} alt="RollerCoders Logo" style={{ height: '180px', width: 'auto' }} />
+        </Link>
+      </div>
       <div>
         <Link key="home" to="/">Home</Link>
         <Link key="about" to="/about">About</Link>
@@ -28,7 +33,7 @@ const Nav = () => {
         <button onClick={handleSearch}>Search</button>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
