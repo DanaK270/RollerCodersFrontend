@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import Client from "../services/api";
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+//import Client from "../services/api";
 
 const Login = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const navigate = useNavigate();
+  const [usernameOrEmail, setUsernameOrEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false) // State to toggle password visibility
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await Client.post("/auth/login", {
+      const response = await Client.post('/auth/login', {
         usernameOrEmail,
-        password,
-      });
-      console.log(response.data);
-      navigate("/");
+        password
+      })
+      console.log(response.data)
+      navigate('/')
     } catch (error) {
-      console.error("Error logging in:", error);
+      console.error('Error logging in:', error)
     }
-  };
+  }
 
   return (
     <div className="auth-container">
@@ -35,7 +35,7 @@ const Login = () => {
         />
         <div className="password-input-container">
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -46,7 +46,7 @@ const Login = () => {
             className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? 'Hide' : 'Show'}
           </button>
         </div>
         <button type="submit">Login</button>
@@ -55,7 +55,7 @@ const Login = () => {
         New user? <Link to="/register">Register here</Link>.
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
