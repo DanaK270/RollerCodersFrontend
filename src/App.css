@@ -19,7 +19,8 @@ div {
   background-color: #fffbe6; /* Soft yellow background */
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: 2.5em; /* Increased size for impact */
   margin-bottom: 20px;
   text-align: center;
@@ -35,7 +36,11 @@ p {
 
 .navbar {
   color: #ffffff;
-  background: linear-gradient(to right, #6a5acd, #ffdd57); /* Purple to yellow gradient */
+  background: linear-gradient(
+    to right,
+    #6a5acd,
+    #ffdd57
+  ); /* Purple to yellow gradient */
   padding: 1em;
   min-height: 2em;
   font-family: 'Georgia', serif;
@@ -76,7 +81,7 @@ footer {
   color: #ffffff;
   /* padding: 10px; */
   text-align: center;
-  position: fixed; 
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -95,9 +100,9 @@ footer {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
-  align-items: center; 
-  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .park-item {
@@ -105,6 +110,8 @@ footer {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s;
+  margin: 20px;
+  box-sizing: border-box;
 }
 
 .park-item:hover {
@@ -171,8 +178,8 @@ label {
   font-weight: bold; /* Bolder label */
 }
 
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   width: 100%;
   padding: 15px; /* Adjusted padding */
   border: 2px solid #6a5acd; /* Dark slate blue border */
@@ -202,9 +209,8 @@ button:hover {
   text-align: center;
 }
 
-
 .home {
-  background-image: url("https://images6.alphacoders.com/372/372198.jpg");
+  background-image: url('https://images6.alphacoders.com/372/372198.jpg');
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -215,7 +221,7 @@ button:hover {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
 }
 
-.home h1, 
+.home h1,
 .home h2 {
   color: #ffdd57; /* Bright yellow for headings */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Darker shadow for contrast */
