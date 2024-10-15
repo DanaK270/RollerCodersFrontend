@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-
+import axios from 'axios'
 const AddParkForm = ({ parks }) => {
   const [formData, setFormData] = useState({
     park: '',
     name: '',
-    location: '',
+    // location: '',
     country: '',
     type: '',
     timezone: '',
@@ -50,7 +50,7 @@ const AddParkForm = ({ parks }) => {
           />
         </div>
 
-        <div>
+        {/* <div>
           <label>Location</label>
           <input
             type="number"
@@ -58,7 +58,7 @@ const AddParkForm = ({ parks }) => {
             value={formData.location}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <div>
           <label>Country Code</label>
