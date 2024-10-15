@@ -1,52 +1,68 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../App.css";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import '../App.css'
 
 const Parks = () => {
-  const [parks, setParks] = useState([]);
-  const [selectedPark, setSelectedPark] = useState(null);
+  const [parks, setParks] = useState([])
+  const [selectedPark, setSelectedPark] = useState(null)
+  const PORT = import.meta.env.VITE_PORT
+
+  // useEffect(() => {
+  //   fetchParks();
+  // }, []);
+
+  // const fetchParks = async () => {
+  //   try {
+  //     const response = await axios.get(
+
+  //     );
+  //     if (Array.isArray(response.data)) {
+  //       setParks(response.data);
+  //       setSelectedPark(response.data[0]);
+  //     } else {
+  //       console.error(":", response.data);
+  //     }
+  //   } catch (error) {
+  //     console.error("", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchParks();
-  }, []);
-
-  const fetchParks = async () => {
-    try {
-      const response = await axios.get(
-       
-      );
-      if (Array.isArray(response.data)) {
-        setParks(response.data);
-        setSelectedPark(response.data[0]);
-      } else {
-        console.error(":", response.data);
+    const getParks = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:${PORT}/themeparks/view`
+        )
+        setParks(response.data)
+      } catch (err) {
+        console.log(err)
       }
-    } catch (error) {
-      console.error("", error);
     }
-  };
+
+    getParks()
+  }, [])
 
   const handleParkClick = (park) => {
-    setSelectedPark(park);
-  };
+    setSelectedPark(park)
+  }
 
   return (
     <div>
       <h1 className="parks-title">Explore All Parks</h1>
       <div className="park-container">
-        <ul className="parks-list">
-          {parks.map((park) => (
-            <li key={park._id} className="park-item">
-              <div onClick={() => handleParkClick(park)}>
-                <a href={`#${park.name}`} className="park-link">
-                  {park.name}
-                </a>
+        <div className="parks-list row">
+          {parks?.map((park) => (
+            <div className="card col-md-3 mb-4 park-item" key={park.id}>
+              <img src={park.image} alt="park image" />
+
+              <div className="card-body " onClick={() => handleParkClick(park)}>
+                <h3>{park.name}</h3>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
-      {selectedPark && (
+      {selectedPark && ( //this does not work, i think when the user selects a park we should move them to the park deatils page
         <div className="park-details-container">
           <div className="park-details">
             <h2>{selectedPark.name}</h2>
@@ -57,7 +73,7 @@ const Parks = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Parks;
+export default Parks
