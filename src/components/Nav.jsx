@@ -36,7 +36,7 @@ const Nav = () => {
         <Link key="home" to="/">Home</Link>
         <Link key="about" to="/about">About</Link>
         <Link key="parks" to="/parks">Parks</Link>
-        <Link key="addpark" to="/addpark">Add a Park</Link>
+        <Link key="addpark" to="/addpark">Add a Park`</Link>
         {/* <Link key="login" to="/logIn">Log In</Link> */}
 
         <input
