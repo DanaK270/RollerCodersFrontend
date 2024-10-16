@@ -2,21 +2,18 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-const ParkDetails = () => {
+const ParkDetails = ({ parkDetails }) => {
   const params = useParams()
-  const { parkId } = params()
+  const { parkDetailsId } = params()
   const [parkDetail, setParkDetail] = useState(null)
   useEffect(() => {
-    const getParkDetail = async () => {
-      const response = await axios.get(
-        `http://localhost:${PORT}/themeparks/view/${parkId}?key=${
-          import.meta.env.VITE_PORT
-        }`
-      )
-      setParkDetail(response.data)
-    }
-    getParkDetail()
-  }, [parkId])
+    console.log('Park Details Data:', parkDetails)
+    console.log('Park Details ID from URL:', parkDetailsId)
+  })
+
+  setParkDetail(response.data)
+  console.log(response.data)
+
   return parkDetail ? (
     <div>
       <div>
