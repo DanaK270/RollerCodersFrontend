@@ -4,8 +4,8 @@ import axios from 'axios'
 
 const ParkDetails = () => {
   const params = useParams()
-  const { parkId } = params
-  const [parkDetail, setParkDetail] = useState({})
+  const { parkId } = params()
+  const [parkDetail, setParkDetail] = useState(null)
   useEffect(() => {
     const getParkDetail = async () => {
       const response = await axios.get(
@@ -17,28 +17,28 @@ const ParkDetails = () => {
     }
     getParkDetail()
   }, [parkId])
-  return (
+  return parkDetail ? (
     <div>
-      {parkDetail?.map((park) => (
+      <div>
+        <h1>{parkDetail.name}</h1>
+        <img src={parkDetail.image} alt={parkDetail.name}>
+          {' '}
+        </img>
+        <p>{parkDetail.description}</p>
         <div>
-          <h1>{park.name}</h1>
-          <img src={park.image} alt={park.name}>
-            {' '}
-          </img>
-          <p>{park.description}</p>
-          <div>
-            <h3>Park Type:</h3>
-            {park.parkType}
-          </div>
-          <div>
-            <h3>Location:</h3> {selectedPark.location}
-          </div>
-          <div>
-            <h3>Capacity:</h3> {selectedPark.capacity}
-          </div>
+          <h3>parkDetail Type:</h3>
+          {parkDetail.parkType}
         </div>
-      ))}
+        <div>
+          <h3>Location:</h3> {parkDetail.location}
+        </div>
+        <div>
+          <h3>Capacity:</h3> {parkDetail.capacity}
+        </div>
+      </div>
     </div>
+  ) : (
+    ''
   )
 }
 
