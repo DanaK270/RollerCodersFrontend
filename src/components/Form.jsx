@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import FileUploader from './FileUploader'
+import { useNavigate } from 'react-router-dom'
 
 const AddParkForm = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     countryCode: '',
@@ -53,6 +55,7 @@ const AddParkForm = () => {
       }
     )
     console.log(result.data)
+    navigate('/parks')
   }
 
   return (
@@ -105,7 +108,7 @@ const AddParkForm = () => {
         <div>
           <label>Image</label>
           <input
-            filename={formData.countryCode.image}
+            filename={formData.image}
             name="image"
             onChange={(e) => handleFileChange(e, e.target.files[0])}
             type="file"
