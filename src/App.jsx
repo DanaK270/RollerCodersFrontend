@@ -9,10 +9,20 @@ import Login from '../pages/Login'
 //import { checkSession } from '../'
 import About from './components/About'
 import ThemeParks from './components/ThemeParks'
+import Form from './components/Form'
 
 const App = () => {
   const [user, setUser] = useState(null)
-
+  const themes = {
+    park: 'one',
+    name: 'three',
+    location: 'cc',
+    country: 'ccc',
+    type: '2',
+    timezone: 'ff',
+    description: 'ffff',
+    images: 'null'
+  }
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
@@ -42,6 +52,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           {/* <Route path="/parks" element={<Parks user={user} />} /> */}
           <Route path="/parks" element={<Parks />} />
+          <Route path="/addPark" element={<Form />} />
         </Routes>
       </main>
       <footer>
