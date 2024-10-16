@@ -57,63 +57,64 @@ const AddParkForm = () => {
 
   return (
     <div>
+      <br></br>
       <h1>Add a New Park</h1>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '50px' }}>
-        <div></div>
+        <div class="add">
+          <div>
+            <label>Park Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label>Park Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <div>
+            <label>Country Code</label>
+            <input
+              type="text"
+              name="countryCode"
+              value={formData.countryCode}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label>Park Type</label>
+            <input
+              type="text"
+              name="parkType"
+              value={formData.parkType}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label>Description</label>
+            <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label>Image</label>
+            <input
+              filename={formData.countryCode.image}
+              name="image"
+              onChange={(e) => handleFileChange(e, e.target.files[0])}
+              type="file"
+              accept="image/*"
+            ></input>
+          </div>
+
+          <button type="submit">Add Park</button>
         </div>
-
-        <div>
-          <label>Country Code</label>
-          <input
-            type="text"
-            name="countryCode"
-            value={formData.countryCode}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Park Type</label>
-          <input
-            type="text"
-            name="parkType"
-            value={formData.parkType}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Description</label>
-          <input
-            type="text"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Image</label>
-          <input
-            filename={formData.countryCode.image}
-            name="image"
-            onChange={(e) => handleFileChange(e, e.target.files[0])}
-            type="file"
-            accept="image/*"
-          ></input>
-        </div>
-
-        <button type="submit">Add Park</button>
       </form>
     </div>
   )
