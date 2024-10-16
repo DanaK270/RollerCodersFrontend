@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
 
@@ -41,7 +42,7 @@ const Parks = () => {
       <div className="park-container" style={{ marginBottom: '30px' }}>
         <div className="parks-list row">
           {parks?.map((park) => (
-            <link to={`/parks/${park._id}`} key={park._id}>
+            <Link to={`/parks/${park._id}`} key={park._id}>
               <div
                 className="card col-md-3 mb-4 park-item"
                 key={park.id || park._id}
@@ -58,7 +59,7 @@ const Parks = () => {
                   <button onClick={() => handleDelete(park._id)}>Delete</button>
                 )}
               </div>
-            </link>
+            </Link>
           ))}
         </div>
       </div>
