@@ -38,10 +38,34 @@ h2 {
   margin-bottom: 20px;
   text-align: center;
   color: #6a5acd;
-
   font-family: 'Righteous', sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 p {
@@ -49,7 +73,8 @@ p {
   line-height: 1.6;
   text-align: center;
   color: #333;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lexend Deca", sans-serif;
+
 }
 
 .logo {
@@ -66,7 +91,8 @@ p {
   margin-left: 0.5em;
   height: 80px;
   margin-right: 0.5em;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lexend Deca", sans-serif;
+ 
 }
 
 .App {
@@ -200,8 +226,8 @@ button {
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  font-family: 'Lexend Deca', sans-serif;
-  margin-top: 10px;
+  font-family: "Lexend Deca", sans-serif;
+ 
 }
 
 button:hover {
@@ -238,7 +264,6 @@ button:hover {
   bottom: 0;
   background-image: url('https://images6.alphacoders.com/372/372198.jpg');
   background-size: cover;
-  /* filter: blur(1px); */
   z-index: 0;
 }
 
@@ -247,15 +272,27 @@ button:hover {
   z-index: 1;
 }
 
-.home h1,
-.home h2 {
+.home h1 {
   color: #ffdd57;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: bounceIn 1s ease forwards;
+}
+
+.home h3 {
+  font-family: 'Righteous', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0; /* Start hidden */
+  animation-delay: 0.5s;
 }
 
 .home p {
   color: #613a7d;
   text-shadow: none;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0; /* Start hidden */
+  animation-delay: 1s;
 }
 
 .dark-mode {
@@ -292,10 +329,29 @@ button:hover {
   }
 }
 
-h3 {
-  font-family: 'Righteous', sans-serif;
-  font-weight: 200;
-  font-style: normal;
+.typing-effect {
+  border-right: 2px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
 
 .textbox {
@@ -305,27 +361,4 @@ h3 {
   border-radius: 20px;
 }
 
-.add {
-  position: absolute;
-  top: 50%;
-  left: 52%;
 
-  transform: translate(-50%,-50%);
-  align-content: center;
-  align-self: center;
-  /* display: flex;
-  flex-direction: column;
- justify-content: center; */
-
-}
-
-.subForm{
-  background-color: #6a5acd;
-  color:#ffdd57;
-  cursor: pointer;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  font-family: 'Lexend Deca', sans-serif;
-}

@@ -41,23 +41,32 @@ const Parks = () => {
       <h1 className="parks-title">Explore All Parks</h1>
       <div className="park-container" style={{ marginBottom: '30px' }}>
         <div className="parks-list row">
-          {parks?.map((park) => (
-            <div
-              className="card col-md-4 mb-4 park-item"
-              key={park.id || park._id}
-            >
-              <img src={park.image} alt="park image" />
+          {parks?.map((park) => {
+            const imageSrc = park.image.startsWith('http')
+              ? park.image
+              : `http://localhost:4000/images/${park.image}`
+            console.log('Image path:', imageSrc) // Debug the path
 
-              <div className="card-body " onClick={() => handleParkClick(park)}>
-                <Link to={`/parks/${park._id || park.id}`}>
-                  <h3>{park.name}</h3>
-                </Link>
+            return (
+              <div
+                className="card col-md-4 mb-4 park-item"
+                key={park.id || park._id}
+              >
+                <img src={imageSrc} alt="park image" />
+                <div
+                  className="card-body "
+                  onClick={() => handleParkClick(park)}
+                >
+                  <Link to={`/parks/${park._id || park.id}`}>
+                    <h3>{park.name}</h3>
+                  </Link>
+                </div>
+                {park._id && (
+                  <button onClick={() => handleDelete(park._id)}>Delete</button>
+                )}
               </div>
-              {park._id && ( // Show delete button only for user-added parks not the ones we are getting from the api
-                <button onClick={() => handleDelete(park._id)}>Delete</button>
-              )}
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
       {selectedPark && ( //this does not work, i think when the user selects a park we should move them to the park deatils page
