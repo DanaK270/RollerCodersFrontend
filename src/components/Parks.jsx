@@ -7,26 +7,6 @@ const Parks = () => {
   const [selectedPark, setSelectedPark] = useState(null)
   const PORT = import.meta.env.VITE_PORT
 
-  // useEffect(() => {
-  //   fetchParks();
-  // }, []);
-
-  // const fetchParks = async () => {
-  //   try {
-  //     const response = await axios.get(
-
-  //     );
-  //     if (Array.isArray(response.data)) {
-  //       setParks(response.data);
-  //       setSelectedPark(response.data[0]);
-  //     } else {
-  //       console.error(":", response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error("", error);
-  //   }
-  // };
-
   useEffect(() => {
     const getParks = async () => {
       try {
@@ -46,18 +26,33 @@ const Parks = () => {
     setSelectedPark(park)
   }
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.get(`http://localhost:${PORT}/themeparks/delete/${id}`)
+      setParks(parks.filter((park) => park._id !== id))
+    } catch (error) {
+      console.error('Error deleting park:', error)
+    }
+  }
+
   return (
     <div>
       <h1 className="parks-title">Explore All Parks</h1>
-      <div className="park-container">
+      <div className="park-container" style={{ marginBottom: '30px' }}>
         <div className="parks-list row">
           {parks?.map((park) => (
-            <div className="card col-md-3 mb-4 park-item" key={park.id}>
+            <div
+              className="card col-md-3 mb-4 park-item"
+              key={park.id || park._id}
+            >
               <img src={park.image} alt="park image" />
 
               <div className="card-body " onClick={() => handleParkClick(park)}>
                 <h3>{park.name}</h3>
               </div>
+              {park._id && ( // Show delete button only for user-added parks not the ones we are getting from the api
+                <button onClick={() => handleDelete(park._id)}>Delete</button>
+              )}
             </div>
           ))}
         </div>
