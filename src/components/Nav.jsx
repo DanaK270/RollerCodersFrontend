@@ -2,27 +2,34 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Rollerlogo from '../assets/12.png';
 import '../App.css';
-import audioFile from '../assets/audio.mp3'; // Adjust the path as necessary
+import audioFile from '../assets/audio.mp3';
 
 const Nav = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
-  const audioRef = useRef(null); // Create a ref for the audio element
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const currentMode = localStorage.getItem('darkMode') === 'true';
     setDarkMode(currentMode);
     document.body.classList.toggle('dark-mode', currentMode);
-    // Play audio when the component mounts
-    audioRef.current.play().catch((error) => {
-      console.log('Error playing audio:', error);
-    });
+    
+    const playAudio = async () => {
+      try {
+        await audioRef.current.play();
+      } catch (error) {
+        console.log('Error playing audio:', error);
+      }
+    };
+
+    playAudio();
   }, []);
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
       navigate(`/parks?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
     }
   };
 
@@ -86,7 +93,6 @@ const Nav = () => {
         </button>
       </div>
 
-      {/* Hidden audio element */}
       <audio ref={audioRef} src={audioFile} preload="auto" />
     </nav>
   );
