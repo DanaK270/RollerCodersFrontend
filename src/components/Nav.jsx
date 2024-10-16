@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import Rollerlogo from '../assets/12.png'
-import '../App.css'
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import Rollerlogo from '../assets/12.png';
+import '../App.css';
+import audioFile from '../assets/audio.mp3'; // Adjust the path as necessary
 
 const Nav = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [darkMode, setDarkMode] = useState(false)
-  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+  const audioRef = useRef(null); // Create a ref for the audio element
 
   useEffect(() => {
-    const currentMode = localStorage.getItem('darkMode') === 'true'
-    setDarkMode(currentMode)
-    document.body.classList.toggle('dark-mode', currentMode)
-  }, [])
+    const currentMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(currentMode);
+    document.body.classList.toggle('dark-mode', currentMode);
+    // Play audio when the component mounts
+    audioRef.current.play().catch((error) => {
+      console.log('Error playing audio:', error);
+    });
+  }, []);
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -27,11 +33,19 @@ const Nav = () => {
   };
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode
-    setDarkMode(newMode)
-    document.body.classList.toggle('dark-mode', newMode)
-    localStorage.setItem('darkMode', newMode)
-  }
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.body.classList.toggle('dark-mode', newMode);
+    localStorage.setItem('darkMode', newMode);
+  };
+
+  const toggleAudio = () => {
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -66,9 +80,16 @@ const Nav = () => {
             <i className="fas fa-moon"></i>
           )}
         </button>
-      </div>
-    </nav>
-  )
-}
 
-export default Nav
+        <button onClick={toggleAudio}>
+          {audioRef.current && !audioRef.current.paused ? 'Pause' : 'Play'} Audio
+        </button>
+      </div>
+
+      {/* Hidden audio element */}
+      <audio ref={audioRef} src={audioFile} preload="auto" />
+    </nav>
+  );
+};
+
+export default Nav;
