@@ -49,8 +49,7 @@ p {
   line-height: 1.6;
   text-align: center;
   color: #333;
-  font-family: "Lexend Deca", sans-serif;
-
+  font-family: 'Lexend Deca', sans-serif;
 }
 
 .logo {
@@ -67,8 +66,7 @@ p {
   margin-left: 0.5em;
   height: 80px;
   margin-right: 0.5em;
-  font-family: "Lexend Deca", sans-serif;
- 
+  font-family: 'Lexend Deca', sans-serif;
 }
 
 .App {
@@ -191,7 +189,7 @@ input[type='password'] {
   padding: 15px;
   border: 2px solid #6a5acd;
   border-radius: 8px;
-background-color: #fff 0.2;
+  background-color: #fff 0.2;
 }
 
 button {
@@ -202,8 +200,8 @@ button {
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  font-family: "Lexend Deca", sans-serif;
- 
+  font-family: 'Lexend Deca', sans-serif;
+  margin-top: 10px;
 }
 
 button:hover {
@@ -270,7 +268,6 @@ button:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 0.5em;
-
   }
 
   .home-container,
@@ -308,4 +305,27 @@ h3 {
   border-radius: 20px;
 }
 
+.add {
+  position: absolute;
+  top: 50%;
+  left: 52%;
 
+  transform: translate(-50%,-50%);
+  align-content: center;
+  align-self: center;
+  /* display: flex;
+  flex-direction: column;
+ justify-content: center; */
+
+}
+
+.subForm{
+  background-color: #6a5acd;
+  color:#ffdd57;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: 'Lexend Deca', sans-serif;
+}
