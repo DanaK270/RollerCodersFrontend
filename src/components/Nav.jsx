@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import Rollerlogo from '../assets/12.png';
-import '../App.css';
+import React, { useState, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import Rollerlogo from '../assets/12.png'
+import '../App.css'
 
 const Nav = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
-  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('')
+  const [darkMode, setDarkMode] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const currentMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(currentMode);
-    document.body.classList.toggle('dark-mode', currentMode);
-  }, []);
+    const currentMode = localStorage.getItem('darkMode') === 'true'
+    setDarkMode(currentMode)
+    document.body.classList.toggle('dark-mode', currentMode)
+  }, [])
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -27,17 +27,21 @@ const Nav = () => {
   };
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    document.body.classList.toggle('dark-mode', newMode);
-    localStorage.setItem('darkMode', newMode);
-  };
+    const newMode = !darkMode
+    setDarkMode(newMode)
+    document.body.classList.toggle('dark-mode', newMode)
+    localStorage.setItem('darkMode', newMode)
+  }
 
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/"> 
-          <img src={Rollerlogo} alt="RollerCoders Logo" style={{ height: '180px', width: 'auto' }} />
+        <Link to="/">
+          <img
+            src={Rollerlogo}
+            alt="RollerCoders Logo"
+            style={{ height: '180px', width: 'auto' }}
+          />
         </Link>
       </div>
       <div>
@@ -54,13 +58,17 @@ const Nav = () => {
           placeholder="Explore Parks..."
         />
         <button onClick={handleSearch}>Search</button>
-        
+
         <button onClick={toggleDarkMode} className="dark-mode-toggle">
-          {darkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
+          {darkMode ? (
+            <i className="fas fa-sun"></i>
+          ) : (
+            <i className="fas fa-moon"></i>
+          )}
         </button>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Nav;
+export default Nav
