@@ -37,6 +37,7 @@ const Nav = () => {
         </Link>
       </div>
       <div>
+
         <Link key="home" to="/">
           Home
         </Link>
@@ -49,6 +50,7 @@ const Nav = () => {
         <Link key="addpark" to="/addpark">
           Add a Park
         </Link>
+
         {/* <Link key="login" to="/logIn">Log In</Link> */}
 
         <input
