@@ -41,19 +41,24 @@ const Parks = () => {
       <div className="park-container" style={{ marginBottom: '30px' }}>
         <div className="parks-list row">
           {parks?.map((park) => (
-            <div
-              className="card col-md-3 mb-4 park-item"
-              key={park.id || park._id}
-            >
-              <img src={park.image} alt="park image" />
+            <link to={`/parks/${park._id}`} key={park._id}>
+              <div
+                className="card col-md-3 mb-4 park-item"
+                key={park.id || park._id}
+              >
+                <img src={park.image} alt="park image" />
 
-              <div className="card-body " onClick={() => handleParkClick(park)}>
-                <h3>{park.name}</h3>
+                <div
+                  className="card-body "
+                  onClick={() => handleParkClick(park)}
+                >
+                  <h3>{park.name}</h3>
+                </div>
+                {park._id && ( // Show delete button only for user-added parks not the ones we are getting from the api
+                  <button onClick={() => handleDelete(park._id)}>Delete</button>
+                )}
               </div>
-              {park._id && ( // Show delete button only for user-added parks not the ones we are getting from the api
-                <button onClick={() => handleDelete(park._id)}>Delete</button>
-              )}
-            </div>
+            </link>
           ))}
         </div>
       </div>
