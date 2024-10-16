@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Rollerlogo from '../assets/Rollerlogo.png';
+import Rollerlogo from '../assets/12.png';
 import '../App.css';
 
 const Nav = () => {
