@@ -15,8 +15,16 @@ const Nav = () => {
   }, [])
 
   const handleSearch = () => {
-    navigate(`/parks?search=${encodeURIComponent(searchQuery)}`)
-  }
+    if (searchQuery.trim()) {
+      navigate(`/parks?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   const toggleDarkMode = () => {
     const newMode = !darkMode
@@ -37,26 +45,16 @@ const Nav = () => {
         </Link>
       </div>
       <div>
-
-        <Link key="home" to="/">
-          Home
-        </Link>
-        <Link key="about" to="/about">
-          About
-        </Link>
-        <Link key="parks" to="/parks">
-          Parks
-        </Link>
-        <Link key="addpark" to="/addpark">
-          Add a Park
-        </Link>
-
-        {/* <Link key="login" to="/logIn">Log In</Link> */}
+        <Link key="home" to="/">Home</Link>
+        <Link key="about" to="/about">About</Link>
+        <Link key="parks" to="/parks">Parks</Link>
+        <Link key="addpark" to="/addpark">Add a Park</Link>
 
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleKeyDown} 
           placeholder="Explore Parks..."
         />
         <button onClick={handleSearch}>Search</button>
