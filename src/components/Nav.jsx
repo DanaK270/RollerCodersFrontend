@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Rollerlogo from '../assets/Rollerlogo.png';
 import '../App.css';
 
 const Nav = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const currentMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(currentMode);
+    document.body.classList.toggle('dark-mode', currentMode);
+  }, []);
 
   const handleSearch = () => {
     navigate(`/parks?search=${encodeURIComponent(searchQuery)}`);
+  };
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.body.classList.toggle('dark-mode', newMode);
+    localStorage.setItem('darkMode', newMode);
   };
 
   return (
@@ -22,7 +36,7 @@ const Nav = () => {
         <Link key="home" to="/">Home</Link>
         <Link key="about" to="/about">About</Link>
         <Link key="parks" to="/parks">Parks</Link>
-        <Link key="login" to="/logIn">Log In</Link>
+        {/* <Link key="login" to="/logIn">Log In</Link> */}
 
         <input
           type="text"
@@ -31,6 +45,10 @@ const Nav = () => {
           placeholder="Explore Parks..."
         />
         <button onClick={handleSearch}>Search</button>
+        
+        <button onClick={toggleDarkMode} className="dark-mode-toggle">
+          {darkMode ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
+        </button>
       </div>
     </nav>
   );

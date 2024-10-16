@@ -9,278 +9,10 @@ div {
 
 .navbar {
   display: flex;
-}
-
-.home-container {
-  margin: 40px;
-  padding: 50px;
-  border: 2px solid #6a5acd; 
-  border-radius: 10px;
-  background-color: #fffbe6; 
-}
-
-h1,
-h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #6a5acd; 
-}
-
-p {
-  font-size: 1.2em;body {
-    margin: 0;
-    background-color: #f4f4f4; 
-  }
-  
-  div {
-    background-size: cover;
-  }
-  
-  .navbar {
-    display: flex;
-    color: #ffffff;
-    background: linear-gradient(to right, #6a5acd, #ffdd57); 
-    padding: 1em;
-    min-height: 60px;
-    font-family: 'Georgia', serif;
-    font-size: large;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .home-container,
-  .about-container,
-  .auth-container {
-    margin: 40px auto; 
-    padding: 50px;
-    border: 2px solid #6a5acd;
-    border-radius: 10px;
-    background-color: #fffbe6; 
-    max-width: 800px; 
-  }
-  
-  h1,
-  h2 {
-    font-size: 2.5em; 
-    margin-bottom: 20px;
-    text-align: center;
-    color: #6a5acd; 
-  }
-  
-  p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    text-align: center;
-    color: #333; 
-  }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  }
-  
-  .navbar a {
-    color: #ffffff; 
-    text-decoration: none;
-    font-size: 18px;
-    margin-left: 1em;
-    font-weight: bold;
-    margin-right: 1em;
-  }
-  
-  .App {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  main {
-    flex-grow: 1;
-  }
-  
-  footer {
-    background: linear-gradient(to right, #6a5acd, #ffdd57);
-    color: #ffffff;
-    text-align: center;
-    position: relative; 
-    width: 100%;
-    padding: 10px; 
-  }
-  
-  .park-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .parks-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .park-item {
-    border: 2px solid #6a5acd; 
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s;
-    margin: 20px;
-    box-sizing: border-box;
-    max-width: 300px;
-  }
-  
-  .park-item:hover {
-    background-color: #ffebcd; 
-    transform: scale(1.05);
-  }
-  
-  .park-link {
-    display: block;
-    padding: 10px;
-    text-decoration: none; 
-    color: #6a5acd; 
-  }
-  
-  .park-details {
-    margin-top: 20px;
-    padding: 20px;
-    border: 2px solid #6a5acd; 
-    border-radius: 20px;
-    background-color: #ffffff; 
-  }
-  
-  .park-details h2 {
-    margin-top: 0;
-    color: #6a5acd; 
-  }
-  
-  .park-details p {
-    margin: 6px 0;
-    color: #333; 
-  }
-  
-  .password-input-container {
-    position: relative;
-  }
-  
-  .password-toggle {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .form-group {
-    margin-bottom: 20px; 
-  }
-  
-  label {
-    display: grid;
-    margin-bottom: 5px; 
-    font-weight: bold; 
-  }
-  
-  input[type='text'],
-  input[type='password'] {
-    width: 100%;
-    padding: 15px; 
-    border: 2px solid #6a5acd; 
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #ffdd57; 
-    color: #6a5acd; 
-    cursor: pointer;
-    padding: 10px 20px; 
-    border: none;
-    border-radius: 5px; 
-    transition: background-color 0.3s; 
-  }
-  
-  button:hover {
-    background-color: #ffd700; 
-  }
-  
-  .home {
-    background-image: url('https://images6.alphacoders.com/372/372198.jpg');
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 50px 20px;
-    color: #ffffff; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-  }
-  
-  .home h1,
-  .home h2 {
-    color: #ffdd57; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
-  }
-  
-  .home p {
-    color: #ffffff; 
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
-  }
-  
-
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column; 
-      align-items: flex-start; 
-    }
-  
-    .home-container,
-    .about-container,
-    .auth-container {
-      margin: 20px; 
-      padding: 30px; 
-    }
-  
-    h1,
-    h2 {
-      font-size: 2em; 
-    }
-  
-    button {
-      width: 100%; 
-    }
-  
-    .park-item {
-      flex: 1 1 100%; 
-      max-width: none; 
-    }
-  }
-  
-  line-height: 1.6;
-  text-align: center;
-  color: #333; 
-}
-
-.navbar {
   color: #ffffff;
-  background: linear-gradient(
-    to right,
-    #6a5acd,
-    #ffdd57
-  ); 
-  padding: 1em;
-  min-height: 2em;
+  background: linear-gradient(to right, #6a5acd, #ffdd57); 
+  padding: 0.5em;
+  min-height: 40px;
   font-family: 'Georgia', serif;
   font-size: large;
   width: 100%;
@@ -288,8 +20,34 @@ p {
   justify-content: space-between;
 }
 
+.home-container,
+.about-container,
+.auth-container {
+  margin: 40px auto; 
+  padding: 30px; 
+  border: 2px solid #6a5acd; 
+  border-radius: 10px;
+  background-color: #fffbe6; 
+  max-width: 800px; 
+}
+
+h1,
+h2 {
+  font-size: 2.5em; 
+  margin-bottom: 20px;
+  text-align: center;
+  color: #6a5acd; 
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  color: #333; 
+}
+
 .logo {
-  font-size: 2rem;
+  font-size: 1.5rem; 
   font-weight: bold;
   color: #ffffff; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -298,10 +56,10 @@ p {
 .navbar a {
   color: #ffffff; 
   text-decoration: none;
-  font-size: 18px;
-  margin-left: 1em;
+  font-size: 16px; 
+  margin-left: 0.5em; 
   font-weight: bold;
-  margin-right: 1em;
+  margin-right: 0.5em; 
 }
 
 .App {
@@ -317,25 +75,13 @@ main {
 footer {
   background: linear-gradient(to right, #6a5acd, #ffdd57);
   color: #ffffff;
-
   text-align: center;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  padding: 10px; 
 }
-.logo{
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ffffff; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
-}
-.logo img {
-  height: 50px; 
-  width: auto;  
-}
-
 
 .park-container {
   display: flex;
@@ -362,6 +108,7 @@ footer {
   transition: transform 0.3s;
   margin: 20px;
   box-sizing: border-box;
+  max-width: 300px;
 }
 
 .park-item:hover {
@@ -460,15 +207,33 @@ button:hover {
 }
 
 .home {
-  background-image: url('https://images6.alphacoders.com/372/372198.jpg');
+  position: relative;
   height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 50px 20px;
   color: #ffffff; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images6.alphacoders.com/372/372198.jpg');
+  background-size: cover;
+  /* filter: blur(1px); */
+  z-index: 0; 
+}
+
+.home > * {
+  position: relative; 
+  z-index: 1;
 }
 
 .home h1,
@@ -478,6 +243,40 @@ button:hover {
 }
 
 .home p {
-  color: #ffffff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
+  color: #613a7d; 
+  text-shadow: none; 
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 0.5em; 
+  }
+
+  .home-container,
+  .about-container,
+  .auth-container {
+    margin: 20px; 
+    padding: 20px; 
+  }
+
+  h1,
+  h2 {
+    font-size: 2em; 
+  }
+
+  button {
+    width: 100%; 
+  }
+
+  .park-item {
+    flex: 1 1 100%; 
+    max-width: none; 
+  }
 }
