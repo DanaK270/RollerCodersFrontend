@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Rollerlogo from '../assets/Rollerlogo.png';
+import Rollerlogo from '../assets/12.png';
 import '../App.css';
 
 const Nav = () => {
@@ -36,6 +36,7 @@ const Nav = () => {
         <Link key="home" to="/">Home</Link>
         <Link key="about" to="/about">About</Link>
         <Link key="parks" to="/parks">Parks</Link>
+        <Link key="addpark" to="/addpark">Add a Park`</Link>
         {/* <Link key="login" to="/logIn">Log In</Link> */}
 
         <input
