@@ -40,20 +40,6 @@ const App = () => {
   //     checkToken()
   //   }
   // }, [])
-  const [parkDetails, setParkDetails] = useState([])
-
-  const getParkDetails = async () => {
-    try {
-      const res = await axios.get('http://localhost:${PORT}/themeparks/view')
-      setParkDetails(res.data)
-    } catch (err) {
-      console.error('Error fetching Park Details:', err)
-    }
-  }
-
-  useEffect(() => {
-    getParkDetails()
-  }, [])
 
   return (
     <div className="App">
@@ -68,10 +54,7 @@ const App = () => {
           {/* <Route path="/parks" element={<Parks user={user} />} /> */}
           <Route path="/parks" element={<Parks />} />
           <Route path="/addPark" element={<Form />} />
-          <Route
-            path="/parks/:park._d`"
-            element={<ParkDetails parkDetails={parkDetails} />}
-          />
+          <Route path="/parks/view/:parkDetailsId" element={<ParkDetails />} />
         </Routes>
       </main>
       <footer>

@@ -49,7 +49,7 @@ const Parks = () => {
               <img src={park.image} alt="park image" />
 
               <div className="card-body " onClick={() => handleParkClick(park)}>
-                <Link to={`/parks/${park._id || park.id}`}>
+                <Link to={`/parks/${park.id}`} key={park.id}>
                   <h3>{park.name}</h3>
                 </Link>
               </div>

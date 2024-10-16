@@ -1,36 +1,48 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 
-const ParkDetails = ({ parkDetails }) => {
-  const params = useParams()
-  const { parkDetailsId } = params()
-  const [parkDetail, setParkDetail] = useState(null)
+const ParkDetails = () => {
+  const { parkDetailsId } = useParams()
+  const [parkDetailDetails, setParkDetailDetails] = useState(null)
+
+  const [parkDetails, setParkDetails] = useState([])
+
+  const getParkDetails = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:${PORT}/themeparks/view/${parkDetailsId}`
+      )
+      setParkDetails(res.data)
+      console.log(parkDetails)
+    } catch (err) {
+      console.error('Error fetching Park Details:', err)
+    }
+  }
+
   useEffect(() => {
-    console.log('Park Details Data:', parkDetails)
-    console.log('Park Details ID from URL:', parkDetailsId)
-  })
+    getParkDetails()
+  }, [parkDetailsId])
 
-  setParkDetail(response.data)
-  console.log(response.data)
+  // setParkDetail(response.data)
+  // console.log(response.data)
 
-  return parkDetail ? (
+  return parkDetails ? (
     <div>
       <div>
-        <h1>{parkDetail.name}</h1>
-        <img src={parkDetail.image} alt={parkDetail.name}>
+        <h1>{parkDetails.name}</h1>
+        <img src={parkDetails.image} alt={parkDetails.name}>
           {' '}
         </img>
-        <p>{parkDetail.description}</p>
+        <p>{parkDetails.description}</p>
         <div>
           <h3>parkDetail Type:</h3>
-          {parkDetail.parkType}
+          {parkDetails.parkType}
         </div>
         <div>
-          <h3>Location:</h3> {parkDetail.location}
+          <h3>Location:</h3> {parkDetails.location}
         </div>
         <div>
-          <h3>Capacity:</h3> {parkDetail.capacity}
+          <h3>Capacity:</h3> {parkDetails.capacity}
         </div>
       </div>
     </div>
